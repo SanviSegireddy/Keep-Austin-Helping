@@ -13,7 +13,7 @@ function HomePageButtons() {
       {!session?.user && (
         <Link
           href="/sign-in"
-          className="flex flex-col h-24 w-28 rounded-b-3xl items-center justify-center bg-color5 hover:h-28 hover:text-lg duration-200 transition-all hover:text-white"
+          className="flex flex-col h-24 w-28 rounded-b-3xl items-center justify-center bg-color2 font-merriweather hover:h-28 hover:text-lg duration-200 transition-all hover:text-white"
         >
           Sign In
         </Link>
@@ -21,7 +21,7 @@ function HomePageButtons() {
       {session?.user && (
         <Link
           href="/users"
-          className="flex flex-col h-24 w-28 rounded-b-3xl items-center justify-center bg-color5 hover:h-28 hover:text-lg duration-200 transition-all hover:text-white"
+          className="flex flex-col h-24 w-28 rounded-b-3xl items-center justify-center bg-color2 font-merriweather hover:h-28 hover:text-lg duration-200 transition-all hover:text-white"
         >
           <span>Your</span>
           <span>Account</span>
@@ -31,7 +31,7 @@ function HomePageButtons() {
       {!session?.user && (
         <Link
           href="/sign-up"
-          className="flex flex-col h-24 w-28 rounded-b-3xl items-center justify-center bg-color5 hover:h-28 hover:text-lg duration-200 transition-all hover:text-white"
+          className="flex flex-col h-24 w-28 rounded-b-3xl items-center justify-center bg-color2 font-merriweather hover:h-28 hover:text-lg duration-200 transition-all hover:text-white"
         >
           <span>Create an</span>
           <span>Account</span>

@@ -5,7 +5,7 @@ import ParallaxEffect from "./parallax-effect";
 function About() {
   return (
     <div className="text-white text-center">
-      <ParallaxEffect bgImage="/image1.png">
+      <ParallaxEffect bgImage="/image4.png">
         <p className="text-center text-5xl font-bold">About Us</p>
         <p className="text-2xl font-semibold">
           Welcome to Keep Austin Helping!

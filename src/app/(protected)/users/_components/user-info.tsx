@@ -14,7 +14,7 @@ function UserInfo() {
 
   return (
     <div className="flex items-center gap-2">
-      <p className="text-xl">{session?.user?.name}</p>
+      <p className="text-xl font-merriweather">{session?.user?.name}</p>
       <SignOut />
       <UploadImage />
     </div>

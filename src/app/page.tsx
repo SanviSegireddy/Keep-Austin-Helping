@@ -22,7 +22,7 @@ export default async function Home() {
               quality={100}
               className="w-80 aspect-square"
             />
-            <div className="flex flex-col gap-2 text-color2 text-6xl font-light justify-center font-town">
+            <div className="flex flex-col gap-2 text-color2 text-7xl font-light justify-center font-merriweather">
               <span>KEEP</span>
               <span>AUSTIN</span>
               <span>HELPING</span>

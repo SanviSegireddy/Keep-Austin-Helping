@@ -22,6 +22,11 @@ const town70 = localFont({
   variable: "--font-town-70",
   weight: "100 900",
 });
+const Merriweather = localFont({
+  src: "./fonts/Merriweather-Regular.ttf",
+  variable: "--font-merriweather-regular",
+  weight: "100 900",
+});
 
 export const metadata: Metadata = {
   title: "Keep Austin Helping",
@@ -36,7 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${town70.variable} antialiased h-[100dvh] bg-color1`}
+        className={`${geistSans.variable} ${geistMono.variable} ${Merriweather.variable} ${town70.variable} antialiased h-[100dvh] bg-color1`}
       >
         <Providers>
           {children}

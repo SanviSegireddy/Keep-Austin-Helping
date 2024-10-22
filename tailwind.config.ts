@@ -12,6 +12,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         town: ["var(--font-town-70)"],
+        merriweather:["var(--font-merriweather-regular)"]
       },
       colors: {
         background: "hsl(var(--background))",

@@ -27,14 +27,14 @@ const SearchPincode = () => {
         className={`w-[500px] bg-white ${
           isPincodeInvalid && isTouched ? "border-red-500" : ""
         }`}
-        placeholder="Enter Pincode"
+        placeholder="Enter Your Zipcode to Find an Opportunity Near You!"
         onChange={handleChange}
         value={pincode}
         onBlur={() => setIsTouched(true)} // Ensure input is marked as touched on blur
         suffix={<Search className="h-4 w-4 text-muted-foreground" />}
       />
       {isPincodeInvalid && isTouched && (
-        <p className="text-red-500 text-xs pt-0.5">enter valid pincode.</p>
+        <p className="text-red-500 text-xs pt-0.5">enter a valid zipcode.</p>
       )}
     </div>
   );

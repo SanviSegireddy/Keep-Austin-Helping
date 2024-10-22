@@ -14,7 +14,7 @@ const OpportunityCTA = ({ opportunity }: OpportunityCTAProps) => {
       target="_blank"
     >
       <Card>
-        <CardContent className="py-2 hover:bg-muted text-[15px]">
+        <CardContent className="py-2 hover:bg-muted text-[15px] font-merriweather">
           <p className="text-lg font-medium">{opportunity.title}</p>
           <p className="text-sm text-muted-foreground pb-2">
             {opportunity.organization}
