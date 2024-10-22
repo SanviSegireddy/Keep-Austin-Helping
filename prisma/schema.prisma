@@ -1,0 +1,26 @@
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id                  String        @id @default(cuid())
+  fistName            String
+  lastName            String
+  email               String        @unique
+  password            String
+  preferredCategories String?
+  preferredLocations  String?
+  Testimonial         Testimonial[]
+}
+
+model Testimonial {
+  id     String @id @default(cuid())
+  url    String
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
