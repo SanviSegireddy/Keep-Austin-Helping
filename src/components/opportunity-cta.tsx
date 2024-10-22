@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { VolunteerOpportunity } from "@/data";
+import { VolunteerOpportunity } from "@/types";
 import { Card, CardContent } from "./ui/card";
 
 interface OpportunityCTAProps {

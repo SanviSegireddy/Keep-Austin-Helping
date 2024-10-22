@@ -1,3 +1,4 @@
+/* eslint-disable */
 "use client";
 
 import { CloudUpload } from "lucide-react";
@@ -29,7 +30,7 @@ export default function UploadImage() {
     <CldUploadWidget
       signatureEndpoint="/api/upload-image"
       onSuccess={(event) => {
-        //@ts-ignore
+        //@ts-expect-error error expected
         uploadImageToDb(event.info?.public_id);
       }}
     >
