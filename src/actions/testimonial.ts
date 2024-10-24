@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { authOptions } from "@/lib/options";
 import { ResponseEntity } from "@/types";
 import { getServerSession } from "next-auth";
+import { revalidatePath } from "next/cache";
 
 export const upload = async (url: string): Promise<ResponseEntity> => {
   try {
@@ -22,6 +23,8 @@ export const upload = async (url: string): Promise<ResponseEntity> => {
         userId: user.id,
       },
     });
+
+    revalidatePath("/")
 
     return {
       status: "success",
