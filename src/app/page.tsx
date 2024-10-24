@@ -44,8 +44,8 @@ export default async function Home() {
 
       {images.length > 0 && (
         <div className="flex flex-col gap-2 items-center justify-center pt-10 pb-20">
-          <p className="text-3xl text-center font-semi-bold text-color2">
-            Our Testimonials
+          <p className="text-3xl text-center font-merriweather text-color2">
+            Our Testimonials:
           </p>
           <ImageCarousel images={images} />
         </div>

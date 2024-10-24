@@ -16,6 +16,7 @@ model User {
   preferredCategories String?
   preferredLocations  String?
   Testimonial         Testimonial[]
+  createdAt DateTime @default(now())
 }
 
 model Testimonial {
@@ -23,4 +24,5 @@ model Testimonial {
   url    String
   userId String
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
 }
