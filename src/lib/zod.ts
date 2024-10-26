@@ -37,3 +37,8 @@ export const SignUpSchema = z
     path: ["confirmPassword"],
     message: "Password do not match",
   });
+
+export const UpdateUserSchema = z.object({
+  fistName: z.string().min(1, { message: "Please enter your fist name" }),
+  lastName: z.string().min(1, { message: "Please enter your last name" }),
+});

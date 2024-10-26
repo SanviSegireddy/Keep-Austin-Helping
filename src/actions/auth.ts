@@ -3,8 +3,11 @@
 import bcryptjs from "bcryptjs";
 
 import { db } from "@/lib/db";
-import { SignUpSchema } from "@/lib/zod";
+import { SignUpSchema, UpdateUserSchema } from "@/lib/zod";
 import { ResponseEntity } from "@/types";
+import { revalidatePath } from "next/cache";
+import { authOptions } from "@/lib/options";
+import { getServerSession } from "next-auth";
 
 export const createUser = async (user: unknown): Promise<ResponseEntity> => {
   const validatedUser = SignUpSchema.safeParse(user);
@@ -72,7 +75,7 @@ export const updateUserById = async (
   id: string,
   user: unknown
 ): Promise<ResponseEntity> => {
-  const validatedUser = SignUpSchema.safeParse(user);
+  const validatedUser = UpdateUserSchema.safeParse(user);
 
   try {
     if (!validatedUser.success) {
@@ -81,6 +84,8 @@ export const updateUserById = async (
         message: validatedUser.error.errors[0].message,
       };
     }
+
+    console.log("user", validatedUser.data);
 
     const existingUser = await db.user.findUnique({
       where: {
@@ -95,12 +100,24 @@ export const updateUserById = async (
       };
     }
 
-    await db.user.update({
+    const data = await db.user.update({
       where: {
         id,
       },
       data: validatedUser.data,
     });
+    console.log(data);
+
+    const user = await getServerSession(authOptions).then((res) => res?.user);
+    if (!user) {
+      return {
+        status: "error",
+        message: "User not found",
+      };
+    }
+    user.name = data.fistName + " " + data.lastName;
+
+    revalidatePath("/users");
 
     return {
       status: "success",
@@ -121,11 +138,20 @@ export const updateUserById = async (
   }
 };
 
-export const deleteUserById = async (id: string): Promise<ResponseEntity> => {
+export const deleteUser = async (): Promise<ResponseEntity> => {
+  const user = await getServerSession(authOptions).then((res) => res?.user);
+
+  if (!user) {
+    return {
+      status: "error",
+      message: "User not found",
+    };
+  }
+
   try {
     await db.user.delete({
       where: {
-        id,
+        id: user.id,
       },
     });
 

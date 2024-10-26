@@ -24,12 +24,17 @@ async function UserPage() {
     userLocations: preferredLocations ? preferredLocations.split("|") : [],
   };
 
+  const userName = data?.fistName + " " + data?.lastName;
+
   return (
     <div>
       <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between px-4 py-2">
         <Logo />
         <div className="flex items-center gap-2">
-          <UserActionDropDown userPreferences={preferences} />
+          <UserActionDropDown
+            userPreferences={preferences}
+            userName={userName}
+          />
           <ImageUploader />
         </div>
       </div>
