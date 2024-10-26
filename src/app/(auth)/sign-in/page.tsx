@@ -1,5 +1,6 @@
 import React from "react";
-import SignInForm from "./_components/sign-in-form";
+import Image from "next/image";
+
 import {
   Card,
   CardContent,
@@ -7,7 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
+
+import SignInForm from "./sign-in-form";
 
 function SignInPage() {
   return (

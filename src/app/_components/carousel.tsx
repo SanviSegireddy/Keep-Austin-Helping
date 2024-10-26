@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Testimonial } from "@prisma/client";
 
 import {
   Carousel,
@@ -10,7 +11,6 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { CldImage } from "next-cloudinary";
-import { Testimonial } from "@prisma/client";
 
 interface ImageCarouselProps {
   images: Testimonial[];
@@ -34,6 +34,8 @@ export default function ImageCarousel({ images }: ImageCarouselProps) {
                 width={300}
                 height={200}
                 className="w-80 h-60 object-cover rounded-lg"
+                loading="lazy"
+                loader={() => image.url}
               />
             </div>
           </CarouselItem>

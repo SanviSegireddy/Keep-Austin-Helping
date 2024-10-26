@@ -19,7 +19,11 @@ import {
 import { Success } from "./ui/sonner";
 import { Button } from "./ui/button";
 
-const SignOut = () => {
+interface SignOutProps extends React.ComponentPropsWithoutRef<typeof AlertDialog> {
+  children?: React.ReactNode;
+}
+
+const SignOut = ({...props}: SignOutProps) => {
   const { data: session } = useSession();
   const handleLogout = async () => {
     try {
@@ -35,8 +39,8 @@ const SignOut = () => {
   if (!session?.user) return null;
 
   return (
-    <AlertDialog>
-      <AlertDialogTrigger asChild>
+    <AlertDialog {...props}>
+      <AlertDialogTrigger asChild className="hidden">
         <Button variant={"outline"} className="p-2">
           <LogOutIcon size={18} />
           {/* <p className="text-sm">Logout</p> */}

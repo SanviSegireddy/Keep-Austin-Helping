@@ -1,9 +1,6 @@
 "use client";
 
-import SignOut from "@/components/sign-out";
 import { useSession } from "next-auth/react";
-import React from "react";
-import UploadImage from "@/components/upload-image";
 
 function UserInfo() {
   const { data: session, status } = useSession();
@@ -12,13 +9,11 @@ function UserInfo() {
     return <div>Loading...</div>;
   }
 
-  return (
-    <div className="flex items-center gap-2">
-      <p className="text-xl font-merriweather">{session?.user?.name}</p>
-      <SignOut />
-      <UploadImage />
-    </div>
-  );
+  if (!session?.user) {
+    return null;
+  }
+
+  return <p className="font-merriweather text-xl">{session?.user?.name}</p>;
 }
 
 export default UserInfo;

@@ -1,8 +1,8 @@
 /* eslint-disable */
 "use client";
 
-import { CloudUpload } from "lucide-react";
-import { CldUploadWidget } from "next-cloudinary";
+import { CloudUpload, Upload } from "lucide-react";
+import { CldUploadButton, CldUploadWidget } from "next-cloudinary";
 import { Button } from "./ui/button";
 import { upload } from "@/actions/testimonial";
 import { toast } from "sonner";
@@ -27,20 +27,21 @@ export default function UploadImage() {
   };
 
   return (
-    <CldUploadWidget
+    <CldUploadButton
       signatureEndpoint="/api/upload-image"
       onSuccess={(event) => {
         //@ts-expect-error error expected
         uploadImageToDb(event.info?.public_id);
       }}
     >
-      {({ open }) => {
+      {/* {({ open }) => {
         return (
           <Button variant={"outline"} className="p-2" onClick={() => open()}>
             <CloudUpload />
           </Button>
         );
-      }}
-    </CldUploadWidget>
+      }} */}
+      Upload
+    </CldUploadButton>
   );
 }

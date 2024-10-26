@@ -21,6 +21,7 @@ export default async function Home() {
               height={100}
               quality={100}
               className="w-80 aspect-square"
+              loading="lazy"
             />
             <div className="flex flex-col gap-2 text-color2 text-7xl font-light justify-center font-merriweather">
               <span>KEEP</span>
@@ -37,6 +38,7 @@ export default async function Home() {
             width={300}
             height={200}
             className="w-full h-full object-cover rounded-lg"
+            loading="lazy"
           />
         </div>
       </main>

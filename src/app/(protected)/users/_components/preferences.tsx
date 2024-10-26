@@ -24,11 +24,12 @@ import { Edit } from "lucide-react";
 import React, { useEffect } from "react";
 import { toast } from "sonner";
 
-interface PreferencesProps {
+interface PreferencesProps
+  extends React.ComponentPropsWithoutRef<typeof Dialog> {
   userPreferences: UserPreferences;
 }
 
-const Preferences = ({ userPreferences }: PreferencesProps) => {
+const Preferences = ({ userPreferences, ...props }: PreferencesProps) => {
   const [preferedLocations, setPreferedLocations] = React.useState<string[]>(
     []
   );
@@ -72,8 +73,8 @@ const Preferences = ({ userPreferences }: PreferencesProps) => {
   };
 
   return (
-    <Dialog open={isDropdownOpen} onOpenChange={setIsDropdownOpen}>
-      <DialogTrigger asChild>
+    <Dialog open={isDropdownOpen} onOpenChange={setIsDropdownOpen} {...props}>
+      <DialogTrigger asChild className="hidden">
         <Button className="p-2" variant={"outline"}>
           <Edit />
         </Button>
@@ -86,7 +87,7 @@ const Preferences = ({ userPreferences }: PreferencesProps) => {
 
         <div>
           <p className="text-lg font-medium">Preferred locations</p>
-          <div className="flex gap-x-3 gap-y-1 flex-wrap">
+          <div className="flex flex-wrap gap-x-3 gap-y-1">
             {locations.map((location) => (
               <div className="flex items-center gap-1" key={location}>
                 <Checkbox
@@ -111,7 +112,7 @@ const Preferences = ({ userPreferences }: PreferencesProps) => {
 
         <div>
           <p className="text-lg font-medium">Preferred categories</p>
-          <div className="flex gap-x-3 gap-y-1 flex-wrap">
+          <div className="flex flex-wrap gap-x-3 gap-y-1">
             {categories.map((category) => (
               <div className="flex items-center gap-1" key={category}>
                 <Checkbox

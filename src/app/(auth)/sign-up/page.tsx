@@ -1,4 +1,6 @@
 import React from "react";
+import Image from "next/image";
+
 import {
   Card,
   CardContent,
@@ -6,8 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import SignUpForm from "./_components/sign-up-form";
-import Image from "next/image";
+
+import SignUpForm from "./sign-up-form";
 
 function SignUpPage() {
   return (
