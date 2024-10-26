@@ -1,6 +1,6 @@
 "use client";
 
-import { ChevronDown, Edit, ImagePlus, LogOut } from "lucide-react";
+import { ChevronDown, Edit, LogOut } from "lucide-react";
 import { useState } from "react";
 
 import SignOut from "@/components/sign-out";
@@ -26,7 +26,7 @@ const UserActionDropDown = ({ userPreferences }: UserActionDropDownProps) => {
 
   return (
     <>
-      <SignOut open={isSignOutOpen} onOpenChange={setIsSignOutOpen} />
+      <SignOut hidden open={isSignOutOpen} onOpenChange={setIsSignOutOpen} />
       <Preferences
         userPreferences={userPreferences}
         open={isPreferencesOpen}
@@ -48,13 +48,6 @@ const UserActionDropDown = ({ userPreferences }: UserActionDropDownProps) => {
           >
             <Edit />
             Edit Preferences
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            onSelect={() => setIsSignOutOpen(true)}
-            className="flex items-center gap-1"
-          >
-            <ImagePlus />
-            Add testimonials
           </DropdownMenuItem>
           <DropdownMenuItem
             onSelect={() => setIsSignOutOpen(true)}

@@ -38,15 +38,15 @@ const OpportunityList = () => {
   }, [debouncedPincode, userPreferences]);
 
   return (
-    <div className="flex flex-col gap-5 items-center py-4">
+    <div className="flex flex-col items-center gap-5 py-4">
       <div className="grid grid-cols-5 gap-8">
-        <div className="flex col-span-2 gap-4 flex-col h-[70vh] w-full items-end">
+        <div className="col-span-2 flex h-[74vh] w-full flex-col items-end gap-4">
           <SearchPincode />
           <Map opportunities={opportunities} />
         </div>
-        <ScrollArea className="w-full col-span-3 h-[70vh] px-4">
+        <ScrollArea className="col-span-3 h-[74vh] w-full px-4">
           {opportunities.length === 0 && (
-            <div className="w-full h-full flex justify-center items-center">
+            <div className="flex h-full w-full items-center justify-center">
               <p className="text-xl text-color2">
                 Unforunately, No opportunities are available at this pincode
               </p>

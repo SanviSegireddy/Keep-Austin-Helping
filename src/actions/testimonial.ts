@@ -1,40 +1,27 @@
 "use server";
 
-import { db } from "@/lib/db";
-import { authOptions } from "@/lib/options";
-import { ResponseEntity } from "@/types";
-import { getServerSession } from "next-auth";
 import { revalidatePath } from "next/cache";
+import cloudinary from "cloudinary";
 
-export const upload = async (url: string): Promise<ResponseEntity> => {
+import { ResponseEntity } from "@/types";
+
+export const deleteImage = async (
+  publicId: string
+): Promise<ResponseEntity> => {
   try {
-    const user = await getServerSession(authOptions).then((res) => res?.user);
+    await cloudinary.v2.uploader.destroy(publicId);
 
-    if (!user) {
-      return {
-        status: "error",
-        message: "user not found",
-      };
-    }
-
-    await db.testimonial.create({
-      data: {
-        url,
-        userId: user.id,
-      },
-    });
-
-    revalidatePath("/")
+    revalidatePath("/");
 
     return {
       status: "success",
-      message: "image uploaded succesfully",
+      message: "image deleted successfully",
     };
   } catch (error) {
     console.log(error);
     return {
       status: "error",
-      message: "failed to upload image",
+      message: "Unable to delete image",
     };
   }
 };

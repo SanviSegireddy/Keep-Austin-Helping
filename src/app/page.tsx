@@ -1,17 +1,29 @@
 import Image from "next/image";
+import cloudinary from "cloudinary";
+
+import { CloudinaryImage, SearchParams } from "@/types";
+
 import About from "./_components/about";
-import ImageCarousel from "./_components/carousel";
 import HomePageButtons from "./_components/home-page-buttons";
 import Socials from "./_components/socials";
-import { db } from "@/lib/db";
+import TestimonialsCarousel from "./_components/testimonials-carousel";
 
-export default async function Home() {
-  const images = await db.testimonial.findMany();
+interface HomePageProps {
+  searchParams: SearchParams;
+}
+
+export default async function HomePage({ searchParams }: HomePageProps) {
+  const results: { resources: CloudinaryImage[] } = await cloudinary.v2.search
+    .expression("resource_type:image AND folder:keep-austin-helping")
+    .max_results(4)
+    .execute();
+
+  const images = results.resources;
 
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col">
       <main className="flex h-[96dvh]">
-        <div className="flex flex-col w-[50vw] justify-between">
+        <div className="flex w-[50vw] flex-col justify-between">
           <HomePageButtons />
           <div className="flex justify-center gap-x-4">
             <Image
@@ -20,10 +32,10 @@ export default async function Home() {
               width={200}
               height={100}
               quality={100}
-              className="w-80 aspect-square"
+              className="aspect-square w-80"
               loading="lazy"
             />
-            <div className="flex flex-col gap-2 text-color2 text-7xl font-light justify-center font-merriweather">
+            <div className="flex flex-col justify-center gap-2 font-merriweather text-7xl font-light text-color2">
               <span>KEEP</span>
               <span>AUSTIN</span>
               <span>HELPING</span>
@@ -31,13 +43,13 @@ export default async function Home() {
           </div>
           <Socials />
         </div>
-        <div className="p-10 w-[50vw]">
+        <div className="w-[50vw] p-10">
           <Image
             src="/image6.jpg"
             alt="image"
             width={300}
             height={200}
-            className="w-full h-full object-cover rounded-lg"
+            className="h-full w-full rounded-lg object-cover"
             loading="lazy"
           />
         </div>
@@ -45,11 +57,11 @@ export default async function Home() {
       <About />
 
       {images.length > 0 && (
-        <div className="flex flex-col gap-2 items-center justify-center pt-10 pb-20">
-          <p className="text-3xl text-center font-merriweather text-color2">
+        <div className="flex flex-col items-center justify-center gap-2 pb-20 pt-10">
+          <p className="font-merriweather-900 text-center text-3xl text-color2">
             Our Testimonials:
           </p>
-          <ImageCarousel images={images} />
+          <TestimonialsCarousel query={searchParams} images={images} />
         </div>
       )}
     </div>

@@ -8,21 +8,12 @@ generator client {
 }
 
 model User {
-  id                  String        @id @default(cuid())
+  id                  String   @id @default(cuid())
   fistName            String
   lastName            String
-  email               String        @unique
+  email               String   @unique
   password            String
   preferredCategories String?
   preferredLocations  String?
-  Testimonial         Testimonial[]
-  createdAt           DateTime      @default(now())
-}
-
-model Testimonial {
-  id        String   @id @default(cuid())
-  url       String
-  userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  createdAt DateTime @default(now())
+  createdAt           DateTime @default(now())
 }

@@ -85,9 +85,9 @@ const Preferences = ({ userPreferences, ...props }: PreferencesProps) => {
           <DialogDescription></DialogDescription>
         </DialogHeader>
 
-        <div>
+        <div className="space-y-1">
           <p className="text-lg font-medium">Preferred locations</p>
-          <div className="flex flex-wrap gap-x-3 gap-y-1">
+          <div className="flex flex-wrap gap-x-4 gap-y-1">
             {locations.map((location) => (
               <div className="flex items-center gap-1" key={location}>
                 <Checkbox
@@ -110,9 +110,9 @@ const Preferences = ({ userPreferences, ...props }: PreferencesProps) => {
 
         <div className="w-full border-b border-color2" />
 
-        <div>
+        <div className="space-y-1">
           <p className="text-lg font-medium">Preferred categories</p>
-          <div className="flex flex-wrap gap-x-3 gap-y-1">
+          <div className="flex flex-wrap gap-x-4 gap-y-1">
             {categories.map((category) => (
               <div className="flex items-center gap-1" key={category}>
                 <Checkbox
