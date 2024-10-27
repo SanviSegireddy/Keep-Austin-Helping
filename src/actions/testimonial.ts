@@ -5,6 +5,14 @@ import cloudinary from "cloudinary";
 
 import { ResponseEntity } from "@/types";
 
+export const revalidateCache = async () => {
+  revalidatePath("/");
+  return {
+    status: "success",
+    message: "image uploaded successfully",
+  };
+};
+
 export const deleteImage = async (
   publicId: string
 ): Promise<ResponseEntity> => {
