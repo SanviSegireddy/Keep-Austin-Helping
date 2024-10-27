@@ -11,7 +11,7 @@ const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between py-2">
+    <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between px-2 py-2">
       <Logo />
 
       {pathname === "/sign-in" && (

@@ -27,7 +27,7 @@ async function UserPage() {
   const userName = data?.fistName + " " + data?.lastName;
 
   return (
-    <div>
+    <div className="flex h-[100dvh] flex-col">
       <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between px-4 py-2">
         <Logo />
         <div className="flex items-center gap-2">
@@ -38,7 +38,9 @@ async function UserPage() {
           <ImageUploader />
         </div>
       </div>
-      <OpportunityList />;
+      <div className="flex grow justify-center px-2 pt-10">
+        <OpportunityList />
+      </div>
     </div>
   );
 }

@@ -59,7 +59,7 @@ const MediaViewer = ({ image, public_key }: MediaViewerProps) => {
         alt="image"
         width={300}
         height={200}
-        className="h-60 w-80 rounded-lg object-cover"
+        className="aspect-[4/3] w-80 rounded-lg object-cover"
         loading="lazy"
         loader={() => image.url}
       />

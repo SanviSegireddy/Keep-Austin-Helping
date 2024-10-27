@@ -26,11 +26,14 @@ export default function TestimonialsCarousel({
       opts={{
         align: "start",
       }}
-      className="w-full max-w-7xl"
+      className="flex w-fit justify-center"
     >
-      <CarouselContent>
+      <CarouselContent className="w-80 max-w-7xl md:w-[640px] lg:w-[960px] xl:w-full">
         {images.map((image, index) => (
-          <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/4">
+          <CarouselItem
+            key={index}
+            className="w-fit md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+          >
             <MediaViewer image={image} public_key={public_key} />
           </CarouselItem>
         ))}

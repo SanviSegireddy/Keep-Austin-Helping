@@ -15,7 +15,7 @@ const Logo = () => {
           height={30}
           loading="lazy"
         />
-        <p className="font-merriweather-900 text-xl uppercase tracking-wide">
+        <p className="font-merriweather-900 text-lg uppercase tracking-wide md:text-xl">
           Keep Austin Helping
         </p>
       </Link>

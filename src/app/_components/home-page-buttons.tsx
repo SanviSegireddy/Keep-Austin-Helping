@@ -11,7 +11,7 @@ function HomePageButtons() {
   const { data: session } = useSession();
 
   return (
-    <div className="flex gap-x-4 text-color6">
+    <div className="flex justify-center gap-x-4 text-color6 lg:justify-normal">
       {!session?.user && (
         <Link
           href="/sign-in"

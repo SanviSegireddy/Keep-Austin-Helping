@@ -1,7 +1,7 @@
 "use client";
 
 import { toast } from "sonner";
-import { Upload } from "lucide-react";
+import { ImagePlus } from "lucide-react";
 
 import { CldUploadButton } from "next-cloudinary";
 
@@ -19,8 +19,8 @@ export default function ImageUploader() {
           });
         }}
       >
-        <Upload />
-        <span>Upload image</span>
+        <ImagePlus />
+        <span className="hidden md:block">Upload image</span>
       </CldUploadButton>
     </Button>
   );
