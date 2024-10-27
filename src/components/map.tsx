@@ -72,7 +72,12 @@ function Map({ opportunities }: MapProps) {
     initMap();
   }, [opportunities]);
 
-  return <div className="w-[500px] h-[500px]" ref={mapRef} />;
+  return (
+    <div
+      className="aspect-square w-full sm:aspect-auto sm:h-[400px] lg:h-[70vh]"
+      ref={mapRef}
+    />
+  );
 }
 
 export default Map;

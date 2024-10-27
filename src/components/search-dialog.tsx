@@ -10,13 +10,13 @@ function SearchDialog() {
   return (
     <Dialog open={isDialogOpen} onOpenChange={setDialogOpen}>
       <DialogTrigger className="flex items-start">
-        <div className="flex flex-col h-24 w-28 rounded-b-3xl items-center justify-center bg-color2 font-merriweather hover:h-28 hover:text-lg duration-200 transition-all hover:text-white">
+        <div className="flex h-24 w-32 flex-col items-center justify-center rounded-b-3xl bg-color2 font-merriweather transition-all duration-200 hover:h-28 hover:text-lg hover:text-white">
           <span>Find an</span>
           <span>Opportunity</span>
           <span>Near me!</span>
         </div>
       </DialogTrigger>
-      <DialogContent className="max-w-[90vw] flex flex-col pt-10">
+      <DialogContent className="flex max-w-[90vw] flex-col pt-10">
         <p className="text-center text-lg">Search for opportunities near you</p>
         <OpportunityList />
       </DialogContent>

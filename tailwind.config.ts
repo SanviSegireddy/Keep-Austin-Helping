@@ -11,8 +11,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        town: ["var(--font-town-70)"],
-        merriweather:["var(--font-merriweather-regular)"]
+        merriweather: ["var(--font-merriweather-regular)"],
+        "merriweather-900": ["var(--font-merriweather-bold)"],
       },
       colors: {
         background: "hsl(var(--background))",

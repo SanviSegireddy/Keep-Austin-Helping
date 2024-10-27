@@ -1,5 +1,6 @@
 import React from "react";
-import SignInForm from "./_components/sign-in-form";
+import Image from "next/image";
+
 import {
   Card,
   CardContent,
@@ -7,23 +8,24 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
+
+import SignInForm from "./sign-in-form";
 
 function SignInPage() {
   return (
-    <div className="h-full grid grid-cols-5 ">
-      <div className="col-span-3 flex justify-end items-center">
+    <div className="grid h-full grid-cols-5">
+      <div className="col-span-3 hidden items-center justify-end lg:flex">
         <Image
           src="/image2.jpg"
           alt="image"
           width={800}
           height={600}
           quality={100}
-          className="bg-cover rounded-xl"
+          className="rounded-xl bg-cover"
         />
       </div>
-      <div className="col-span-2 flex justify-center items-center">
-        <Card className="w-full max-w-md p-4 text-color2/70 bg-white">
+      <div className="col-span-5 flex items-center justify-center lg:col-span-2">
+        <Card className="text-color2/70 w-full max-w-md bg-white p-4">
           <CardHeader>
             <CardTitle>Welcome Back!!</CardTitle>
             <CardDescription>

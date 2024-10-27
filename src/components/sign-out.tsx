@@ -2,7 +2,6 @@
 
 import React from "react";
 import { signOut, useSession } from "next-auth/react";
-import { LogOutIcon } from "lucide-react";
 import { toast } from "sonner";
 
 import {
@@ -17,9 +16,14 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Success } from "./ui/sonner";
-import { Button } from "./ui/button";
 
-const SignOut = () => {
+interface SignOutProps
+  extends React.ComponentPropsWithoutRef<typeof AlertDialog> {
+  children?: React.ReactNode;
+  hidden?: boolean;
+}
+
+const SignOut = ({ hidden, ...props }: SignOutProps) => {
   const { data: session } = useSession();
   const handleLogout = async () => {
     try {
@@ -35,21 +39,16 @@ const SignOut = () => {
   if (!session?.user) return null;
 
   return (
-    <AlertDialog>
-      <AlertDialogTrigger asChild>
-        <Button variant={"outline"} className="p-2">
-          <LogOutIcon size={18} />
-          {/* <p className="text-sm">Logout</p> */}
-        </Button>
-        {/* <div className="flex w-full justify-center items-center gap-1">
-          <LogOutIcon size={16} />
-          <p className="text-sm">Logout</p>
-        </div> */}
+    <AlertDialog {...props}>
+      <AlertDialogTrigger asChild className={`${hidden ? "hidden" : ""}`}>
+        <p className="flex h-24 w-32 items-center justify-center gap-2 rounded-b-3xl bg-color2 transition-all duration-200 hover:h-28 hover:cursor-pointer hover:text-lg hover:text-white">
+          Logout
+        </p>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you sure you want to logout?</AlertDialogTitle>
-          <AlertDialogDescription className="text-muted-foreground text-sm">
+          <AlertDialogDescription className="text-sm text-muted-foreground">
             You will be returning to sign in page...
           </AlertDialogDescription>
         </AlertDialogHeader>

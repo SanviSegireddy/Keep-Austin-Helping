@@ -21,10 +21,10 @@ const SearchPincode = () => {
   };
 
   return (
-    <div>
+    <div className="w-full">
       <Input
         type="number"
-        className={`w-[500px] bg-white ${
+        className={`bg-white ${
           isPincodeInvalid && isTouched ? "border-red-500" : ""
         }`}
         placeholder="Enter Your Zipcode to Find an Opportunity Near You!"
@@ -34,7 +34,7 @@ const SearchPincode = () => {
         suffix={<Search className="h-4 w-4 text-muted-foreground" />}
       />
       {isPincodeInvalid && isTouched && (
-        <p className="text-red-500 text-xs pt-0.5">enter a valid zipcode.</p>
+        <p className="pt-0.5 text-xs text-red-500">enter a valid zipcode.</p>
       )}
     </div>
   );

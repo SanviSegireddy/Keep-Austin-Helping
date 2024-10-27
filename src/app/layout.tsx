@@ -6,26 +6,14 @@ import "./globals.css";
 import Providers from "@/providers";
 import MarqueeText from "./_components/marquee-text";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
-
-const town70 = localFont({
-  src: "./fonts/town-70-accent-regular-1.ttf",
-  variable: "--font-town-70",
-  weight: "100 900",
-});
 const Merriweather = localFont({
   src: "./fonts/Merriweather-Regular.ttf",
   variable: "--font-merriweather-regular",
-  weight: "100 900",
+});
+
+const MerriweatherBold = localFont({
+  src: "./fonts/Merriweather-Bold.ttf",
+  variable: "--font-merriweather-bold",
 });
 
 export const metadata: Metadata = {
@@ -41,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${Merriweather.variable} ${town70.variable} antialiased h-[100dvh] bg-color1`}
+        className={` ${Merriweather.variable} ${MerriweatherBold.variable} h-[100dvh] bg-color1 font-merriweather antialiased`}
       >
         <Providers>
           {children}

@@ -1,19 +1,21 @@
 "use client";
 
-import SearchDialog from "@/components/search-dialog";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
+
+import SearchDialog from "@/components/search-dialog";
+import SignOut from "@/components/sign-out";
 
 function HomePageButtons() {
   const { data: session } = useSession();
 
   return (
-    <div className="flex gap-x-4 text-color6">
+    <div className="flex justify-center gap-x-4 text-color6 lg:justify-normal">
       {!session?.user && (
         <Link
           href="/sign-in"
-          className="flex flex-col h-24 w-28 rounded-b-3xl items-center justify-center bg-color2 font-merriweather hover:h-28 hover:text-lg duration-200 transition-all hover:text-white"
+          className="flex h-24 w-32 flex-col items-center justify-center rounded-b-3xl bg-color2 font-merriweather transition-all duration-200 hover:h-28 hover:text-lg hover:text-white"
         >
           Sign In
         </Link>
@@ -21,7 +23,7 @@ function HomePageButtons() {
       {session?.user && (
         <Link
           href="/users"
-          className="flex flex-col h-24 w-28 rounded-b-3xl items-center justify-center bg-color2 font-merriweather hover:h-28 hover:text-lg duration-200 transition-all hover:text-white"
+          className="flex h-24 w-32 flex-col items-center justify-center rounded-b-3xl bg-color2 font-merriweather transition-all duration-200 hover:h-28 hover:text-lg hover:text-white"
         >
           <span>Your</span>
           <span>Account</span>
@@ -31,12 +33,13 @@ function HomePageButtons() {
       {!session?.user && (
         <Link
           href="/sign-up"
-          className="flex flex-col h-24 w-28 rounded-b-3xl items-center justify-center bg-color2 font-merriweather hover:h-28 hover:text-lg duration-200 transition-all hover:text-white"
+          className="flex h-24 w-32 flex-col items-center justify-center rounded-b-3xl bg-color2 transition-all duration-200 hover:h-28 hover:text-lg hover:text-white"
         >
           <span>Create an</span>
           <span>Account</span>
         </Link>
       )}
+      {session?.user && <SignOut />}
     </div>
   );
 }

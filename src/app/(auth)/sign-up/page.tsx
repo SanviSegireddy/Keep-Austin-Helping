@@ -1,4 +1,6 @@
 import React from "react";
+import Image from "next/image";
+
 import {
   Card,
   CardContent,
@@ -6,14 +8,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import SignUpForm from "./_components/sign-up-form";
-import Image from "next/image";
+
+import SignUpForm from "./sign-up-form";
 
 function SignUpPage() {
   return (
-    <div className="h-full grid grid-cols-5">
-      <div className="col-span-2 flex justify-center items-center">
-        <Card className="w-full max-w-md p-4 bg-white text-color2">
+    <div className="grid h-full grid-cols-5">
+      <div className="col-span-5 flex items-center justify-center lg:col-span-2">
+        <Card className="w-full max-w-md bg-white p-4 text-color2">
           <CardHeader>
             <CardTitle>Welcome Back!!</CardTitle>
             <CardDescription>
@@ -25,14 +27,14 @@ function SignUpPage() {
           </CardContent>
         </Card>
       </div>
-      <div className="col-span-3 flex items-center">
+      <div className="col-span-3 hidden items-center lg:flex">
         <Image
           src="/image3.jpg"
           alt="image"
           width={800}
           height={600}
           quality={100}
-          className="bg-cover rounded-xl"
+          className="rounded-xl bg-cover"
         />
       </div>
     </div>

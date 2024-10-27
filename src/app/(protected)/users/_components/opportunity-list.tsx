@@ -10,6 +10,7 @@ import SearchPincode from "./search-pincode";
 import { useSearch } from "@/hooks/use-search";
 import { usePreferences } from "@/hooks/use-preferences";
 import { sortOpportunitiesByPreferences } from "@/lib/sort-opportunity";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 const OpportunityList = () => {
   const { search: pincode } = useSearch();
@@ -37,23 +38,26 @@ const OpportunityList = () => {
     }
   }, [debouncedPincode, userPreferences]);
 
-  return (
-    <div className="flex flex-col gap-5 items-center py-4">
-      <div className="grid grid-cols-5 gap-8">
-        <div className="flex col-span-2 gap-4 flex-col h-[70vh] w-full items-end">
-          <SearchPincode />
-          <Map opportunities={opportunities} />
-        </div>
-        <ScrollArea className="w-full col-span-3 h-[70vh] px-4">
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
+
+  if (!isDesktop) {
+    return (
+      <div className="flex flex-col items-center gap-y-4">
+        <ScrollArea className="h-[75dvh] px-4">
+          <div className="flex flex-col gap-y-4">
+            <SearchPincode />
+            <Map opportunities={opportunities} />
+          </div>
+
           {opportunities.length === 0 && (
-            <div className="w-full h-full flex justify-center items-center">
-              <p className="text-xl text-color2">
+            <div className="flex items-center justify-center">
+              <p className="tex-lg text-color2 md:text-xl">
                 Unforunately, No opportunities are available at this pincode
               </p>
             </div>
           )}
           {opportunities.length > 0 && (
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-y-4 py-4">
               {opportunities.map((opportunity) => (
                 <OpportunityCTA
                   key={opportunity.id}
@@ -64,6 +68,30 @@ const OpportunityList = () => {
           )}
         </ScrollArea>
       </div>
+    );
+  }
+  return (
+    <div className="flex gap-y-4">
+      <div className="flex h-[70vh] flex-col items-end gap-4 lg:w-[45vw]">
+        <SearchPincode />
+        <Map opportunities={opportunities} />
+      </div>
+      <ScrollArea className="h-[70vh] px-4 lg:w-[45vw]">
+        {opportunities.length === 0 && (
+          <div className="flex h-[70vh] items-center justify-center lg:w-[45vw]">
+            <p className="text-xl text-color2">
+              Unforunately, No opportunities are available at this pincode
+            </p>
+          </div>
+        )}
+        {opportunities.length > 0 && (
+          <div className="flex flex-col gap-4">
+            {opportunities.map((opportunity) => (
+              <OpportunityCTA key={opportunity.id} opportunity={opportunity} />
+            ))}
+          </div>
+        )}
+      </ScrollArea>
     </div>
   );
 };
