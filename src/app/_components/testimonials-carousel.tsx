@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/carousel";
 import { CloudinaryImage, SearchParams } from "@/types";
 import MediaViewer from "./media-viewer";
+import clsx from "clsx";
 
 interface TestimonialsCarouselProps {
   images: CloudinaryImage[];
@@ -21,6 +22,8 @@ export default function TestimonialsCarousel({
 }: TestimonialsCarouselProps) {
   const public_key = query["q"] || "";
 
+  const length = images.length;
+
   return (
     <Carousel
       opts={{
@@ -32,7 +35,11 @@ export default function TestimonialsCarousel({
         {images.map((image, index) => (
           <CarouselItem
             key={index}
-            className="w-fit md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+            className={clsx("w-fit", {
+              "md:basis-1/2": length === 2,
+              "lg:basis-1/3": length === 3,
+              "xl:basis-1/4": length === 4,
+            })}
           >
             <MediaViewer image={image} public_key={public_key} />
           </CarouselItem>
