@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import cloudinary from "cloudinary";
+import { v2 as cloudinary } from "cloudinary";
 
 import { ResponseEntity } from "@/types";
 
@@ -17,7 +17,7 @@ export const deleteImage = async (
   publicId: string
 ): Promise<ResponseEntity> => {
   try {
-    await cloudinary.v2.uploader.destroy(publicId);
+    await cloudinary.uploader.destroy(publicId);
 
     revalidatePath("/");
 

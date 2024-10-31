@@ -6,7 +6,6 @@ import { db } from "@/lib/db";
 import { UserPreferences } from "@/types";
 import UserActionDropDown from "./_components/user-action-dropdown";
 import Logo from "@/components/logo";
-import ImageUploader from "@/components/image-uploader";
 
 async function UserPage() {
   const user = await getServerSession(authOptions).then((res) => res?.user);
@@ -35,7 +34,6 @@ async function UserPage() {
             userPreferences={preferences}
             userName={userName}
           />
-          <ImageUploader />
         </div>
       </div>
       <div className="flex grow justify-center px-2 pt-10">

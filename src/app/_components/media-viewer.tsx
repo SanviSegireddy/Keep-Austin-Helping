@@ -55,13 +55,12 @@ const MediaViewer = ({ image, public_key }: MediaViewerProps) => {
         </Button>
       )}
       <CldImage
-        src={image.url}
+        src={image.public_id}
         alt="image"
         width={300}
         height={200}
         className="aspect-[4/3] w-80 rounded-lg object-cover"
         loading="lazy"
-        loader={() => image.url}
       />
     </div>
   );

@@ -5,8 +5,11 @@ import { IoIosMail } from "react-icons/io";
 
 function Socials() {
   return (
-    <div className="text-yellow-800 flex gap-x-5 justify-center p-5">
-      <Link target="_blank" href="https://www.facebook.com/profile.php?id=61567784455518">
+    <div className="flex justify-center gap-x-5 p-8 text-yellow-800">
+      <Link
+        target="_blank"
+        href="https://www.facebook.com/profile.php?id=61567784455518"
+      >
         <FaFacebookSquare size={40} />
       </Link>
 

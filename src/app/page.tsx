@@ -1,5 +1,5 @@
 import Image from "next/image";
-import cloudinary from "cloudinary";
+import { v2 as cloudinary } from "cloudinary";
 
 import { CloudinaryImage, SearchParams } from "@/types";
 
@@ -13,16 +13,15 @@ interface HomePageProps {
 }
 
 export default async function HomePage({ searchParams }: HomePageProps) {
-  const results: { resources: CloudinaryImage[] } = await cloudinary.v2.search
+  const results: { resources: CloudinaryImage[] } = await cloudinary.search
     .expression("resource_type:image AND folder:keep-austin-helping")
-    .max_results(4)
     .execute();
 
   const images = results.resources;
 
   return (
     <div className="flex flex-col">
-      <main className="flex h-[96dvh]">
+      <main className="flex h-[100dvh]">
         <div className="flex w-full flex-col justify-between lg:w-[50vw]">
           <HomePageButtons />
           <div className="flex justify-center gap-x-4 px-5">
@@ -56,14 +55,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       </main>
       <About />
 
-      {images.length > 0 && (
-        <div className="flex flex-col items-center justify-center gap-2 pb-20 pt-10">
-          <p className="font-merriweather-900 text-center text-3xl text-color2">
-            Our Testimonials:
-          </p>
-          <TestimonialsCarousel query={searchParams} images={images} />
-        </div>
-      )}
+      <TestimonialsCarousel query={searchParams} images={images} />
     </div>
   );
 }
